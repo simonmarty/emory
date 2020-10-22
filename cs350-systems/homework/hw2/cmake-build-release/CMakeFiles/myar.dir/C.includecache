@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/smarty/Documents/cs350/cs350/homework/hw2/main.c
+stdio.h
+-
+myar.h
+/home/smarty/Documents/cs350/cs350/homework/hw2/myar.h
+
+/home/smarty/Documents/cs350/cs350/homework/hw2/myar.c
+myar.h
+/home/smarty/Documents/cs350/cs350/homework/hw2/myar.h
+stdio.h
+-
+dirent.h
+-
+fcntl.h
+-
+unistd.h
+-
+
+/home/smarty/Documents/cs350/cs350/homework/hw2/myar.h
+stdlib.h
+-
+string.h
+-
+ar.h
+-
+sys/stat.h
+-
+

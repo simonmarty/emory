@@ -1,0 +1,97 @@
+68K GAS  ....255.hw6.s 			page 1
+
+
+   1               	* len_a is the length of the array 
+   2               	* if you change the array A for testing purposes,remember to adjust len_a as necessary
+   3               	
+   4               	
+   5               	        xdef Start,Start2,Stop,End
+   6               	        xdef A,B,ans_1,ans_2,key_1,key_2
+   7               	        xref BinarySearch
+   8               	
+   9               	*****************************************************************************
+  10               	* Main program: call BinarySearch twice to search the array for two different key values
+  11               	*               stores the results in ans_1 and ans_2 respectively.
+  12               	*
+  13               	* DO NOT change the main program.
+  14               	* Write your BinarySearch routine in the search.s file
+  15               	*****************************************************************************
+  16               	Start:
+  17 0000 2F3C 0000 	        move.l #A,-(a7)                * Put address of the array on stack frame
+  17      0000 
+  18 0006 2F3A 00A6 	        move.l key_1,-(a7)             * Put the key on the stack frame
+  19 000a 2F3C 0000 	        move.l #0,-(a7)                * Put the low value on the stack frame
+  19      0000 
+  20 0010 2F3A 0098 	        move.l len_a,-(a7)             * Put the high value ont the stack frame
+  21 0014 4EB9 0000 	        jsr BinarySearch                * Search for key in the array
+  21      0000 
+  22               	
+  23 001a DFFC 0000 	        adda.l #16,a7                  * Remove parameter from stack frame
+  23      0010 
+  24 0020 23C0 0000 	        move.l d0,ans_1                * Set ans_1 to the index of key value in array
+  24      0000 
+  25               	
+  26               	Start2:
+  27 0026 4E71      	        nop
+  28               	        
+  29 0028 2F3C 0000 	        move.l #A,-(a7)                * Repeats the process for second key value
+  29      0000 
+  30 002e 2F3A 0082 	        move.l key_2,-(a7)
+  31 0032 2F3C 0000 	        move.l #0,-(a7)
+  31      0000 
+  32 0038 2F3A 0070 	        move.l len_a,-(a7)
+  33 003c 4EB9 0000 	        jsr BinarySearch
+  33      0000 
+  34               	
+  35 0042 DFFC 0000 	        adda.l #16,a7
+  35      0010 
+  36 0048 23C0 0000 	        move.l d0,ans_2
+  36      0000 
+  37               	
+  38               	
+  39               	
+  40               	* ********************************************************************
+  41               	* Do not touch the stop label - you need it to stop the program
+  42               	* ********************************************************************
+  43 004e 4E71      	Stop:   nop
+  44 0050 4E71      	        nop
+  45               	
+  46 0052 0000 0000 	A:      dc.l 0,2,5,9,12,17,22,24,26,37,42,47,51,55,57,59,62,67,75,88,92,99
+  46      0000 0002 
+68K GAS  ....255.hw6.s 			page 2
+
+
+  46      0000 0005 
+  46      0000 0009 
+  46      0000 000C 
+  47 00aa 0000 0016 	len_a:  dc.l 22
+  48               	
+  49 00ae 0000 0025 	key_1:  dc.l 37
+  50 00b2 0000 003C 	key_2:  dc.l 60
+  51               	
+  52 00b6 0000 0000 	ans_1:  ds.l 1
+  53 00ba 0000 0000 	ans_2:  ds.l 1
+  54               	
+  55               	
+  56               	
+  57               	End:
+  58               	
+  59               	        end
+68K GAS  ....255.hw6.s 			page 3
+
+
+DEFINED SYMBOLS
+       ....255.hw6.s:16     .text:0000000000000000 Start
+       ....255.hw6.s:26     .text:0000000000000026 Start2
+       ....255.hw6.s:43     .text:000000000000004e Stop
+       ....255.hw6.s:57     .text:00000000000000be End
+       ....255.hw6.s:46     .text:0000000000000052 A
+       ....255.hw6.s:52     .text:00000000000000b6 ans_1
+       ....255.hw6.s:53     .text:00000000000000ba ans_2
+       ....255.hw6.s:49     .text:00000000000000ae key_1
+       ....255.hw6.s:50     .text:00000000000000b2 key_2
+       ....255.hw6.s:47     .text:00000000000000aa len_a
+
+UNDEFINED SYMBOLS
+B
+BinarySearch

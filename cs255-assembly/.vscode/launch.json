@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ArithmeticTest",
+            "request": "launch",
+            "mainClass": "ArithmeticTest",
+            "projectName": "CS255_b6ed1d4b"
+        }
+    ]
+}

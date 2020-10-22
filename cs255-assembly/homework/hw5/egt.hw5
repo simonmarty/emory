@@ -1,0 +1,16 @@
+# Variable:
+4
+max 2 1
+min 2 1
+sum 2 1
+common 2 1
+# Breakpoint:
+4
+loopend1
+loopend2
+loopend4
+Stop
+# Array:
+0
+# List:
+0

@@ -1,0 +1,10 @@
+digraph {
+	l -> T
+	L -> F
+	L -> T
+	M -> l
+	M -> T
+	F -> T
+	l -> F
+    T -> F
+}

@@ -1,0 +1,10 @@
+# Ignore everything
+*
+!*/
+/PortableGit
+
+# But not these files...
+!.gitignore
+!*.v
+!*.ino
+!*.py

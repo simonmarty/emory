@@ -1,0 +1,23 @@
+digraph {
+	t -> Q
+	U -> K
+	x -> U
+	n -> Q
+	n -> Z
+	n -> A
+	Z -> A
+	n -> t
+	n -> U
+	Z -> U
+	x -> N
+	n -> N
+	t -> B
+	N -> t
+	t -> K
+	Z -> N
+	A -> K
+	N -> Q
+	B -> Q
+	N -> U
+    Q -> x
+}

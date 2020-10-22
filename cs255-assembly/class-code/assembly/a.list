@@ -1,0 +1,46 @@
+68K GAS  ....255.arrayArithmetic.s 			page 1
+
+
+   1               	* arrayArithmetic
+   2               	
+   3               	    xdef Start,Stop,End
+   4               	
+   5               	Start:
+   6               	* a[i] = i foreach i
+   7 0000 207C 0000 	    move.l  #a,a0
+   7      0000 
+   8               	
+   9 0006 20BC 0000 	    move.l  #0,(a0)
+   9      0000 
+  10 000c 217C 0000 	    move.l  #1,4(a0)
+  10      0001 0004 
+  11 0014 217C 0000 	    move.l  #2,8(a0)
+  11      0002 0008 
+  12 001c 217C 0000 	    move.l  #3,12(a0)
+  12      0003 000C 
+  13 0024 217C 0000 	    move.l  #4,16(a0)
+  13      0004 0010 
+  14               	
+  15               	Stop:
+  16 002c 4E71      	    nop
+  17               	
+  18               	
+  19               	* Create an array of ints (length 5)
+  20 002e 0000 0000 	a:    ds.l    5
+  20      0000 0000 
+  20      0000 0000 
+  20      0000 0000 
+  20      0000 0000 
+  21               	
+  22               	End:
+  23               	    end
+68K GAS  ....255.arrayArithmetic.s 			page 2
+
+
+DEFINED SYMBOLS
+....255.arrayArithmetic.s:5      .text:0000000000000000 Start
+....255.arrayArithmetic.s:15     .text:000000000000002c Stop
+....255.arrayArithmetic.s:22     .text:0000000000000042 End
+....255.arrayArithmetic.s:20     .text:000000000000002e a
+
+NO UNDEFINED SYMBOLS

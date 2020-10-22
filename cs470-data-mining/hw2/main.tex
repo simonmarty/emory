@@ -1,0 +1,84 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{float}
+
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+ 
+\renewcommand\lstlistingname{Algorithm}
+\renewcommand\lstlistlistingname{Algorithms}
+\def\lstlistingautorefname{Alg.}
+
+\lstdefinestyle{Python}{
+    language        = Python,
+    frame           = lines, 
+    basicstyle      = \footnotesize,
+    keywordstyle    = \color{blue},
+    stringstyle     = \color{green},
+    commentstyle    = \color{red}\ttfamily
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\course{CS 470}
+\newcommand\hwnumber{2}                  % <-- homework number
+\newcommand\NetIDa{NetID: smarty}           % <-- NetID of person #1
+\newcommand\NetIDb{STUID: 2283420}           % <-- NetID of person #2 (Comment this line out for problem sets)
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+\lhead{\NetIDa\\\NetIDb}                 % <-- Comment this line out for problem sets (make sure you are person #1)
+\chead{\textbf{\Large Homework \hwnumber}}
+\rhead{\course \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+% START
+\begin{document}
+\section*{Collaboration Statement}
+
+The \LaTeX template I am using can be found on \textit{overleaf.com}.
+
+I used the textbook extensively to design my algorithm. I also discussed potential approaches with Jack Frumkes.
+
+\section{Algorithm Description}
+
+The algorithm is written in Python and follows the pseudocode outlined in the textbook. It can be executed as follows:
+\begin{verbatim}
+    python3 apriori.py <min_support> <input_file_path> <output_file_path>    
+\end{verbatim}{}
+
+Where \textit{min\_support} is an integer representing the minimum support count. The other two attributes are self-explanatory.
+
+ Information on the methods and program structure can be found in the code, which is nicely documented with docstrings and type hints.
+
+The Apriori portion of the program takes around 60 seconds to run on the \texttt{T10I4D100K.txt} dataset with support count \texttt{500} on my laptop. This seems reasonable.
+
+The program appears to run correctly on other datasets from \url{http://fimi.uantwerpen.be/data} when compared to the \texttt{Pandas} implementation of Apriori, albeit a bit slower. Lowering the minimum support count seems to slow down the runtime of the algorithm quite significantly.
+
+I made extensive use of sets and dictionaries in order to have O(1) access to support counts. I also cached non-frequent itemsets in order to prune itemsets faster, at the cost of increased space complexity.
+
+This project has helped me better understand the limitations of Apriori and why FP-Growth is generally faster.
+
+\section{Code}
+
+The code for this program is in a Python file called \textit{apriori.py}. I'm not pasting it in here for readability purposes. The code is nicely documented with Python docstrings and type hints, so you shouldn't have too much trouble navigating it.
+
+\end{document}

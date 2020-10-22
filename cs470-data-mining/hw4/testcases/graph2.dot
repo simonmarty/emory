@@ -1,0 +1,16 @@
+digraph {
+	d -> j
+	c -> M
+	c -> V
+	d -> v
+	d -> c
+	v -> V
+	J -> j
+	U -> M
+	F -> J
+	F -> n
+    n -> J
+    j -> F
+    M -> d
+    V -> n
+}

@@ -1,0 +1,26 @@
+digraph {
+	N -> E
+	E -> J
+	S -> R
+	R -> J
+	E -> S
+	a -> E
+	D -> R
+	S -> H
+	v -> S
+	S -> D
+	E -> D
+	R -> H
+	v -> J
+	R -> u
+	v -> R
+	a -> S
+	N -> D
+	N -> S
+	N -> a
+	S -> J
+    H -> u
+    u -> J
+    J -> N
+    v -> v
+}
