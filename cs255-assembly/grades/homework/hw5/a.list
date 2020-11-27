@@ -1,0 +1,194 @@
+68K GAS  ....255.hw5.s 			page 1
+
+
+   1               	* THIS  CODE  WAS MY OWN WORK,IT WAS  WRITTEN  WITHOUT  CONSULTING  ANY
+   2               	* SOURCES  OUTSIDE  OF  THOSE  APPROVED  BY THE  INSTRUCTOR. Simon Marty
+   3               	
+   4               	* ********************************************************************
+   5               	* Do not touch the following 2 xdef lists:
+   6               	* ********************************************************************
+   7               	        xdef Start,Stop,End
+   8               	        xdef A,B,len_a,len_b,max,min,sum,common
+   9               	
+  10               	* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  11               	* You can add more xdef here to export labels to emacsim
+  12               	* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  13               	
+  14               	
+  15               	* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  16               	*      Put your assembler program here - between the start and stop label
+  17               	*      DO NOT define any variables here - see the variable section below
+  18               	* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  19               	Start:
+  20 0000 207C 0000 	        movea.l  #A,a0
+  20      0000 
+  21 0006 227C 0000 	        movea.l  #B,a1
+  21      0000 
+  22               	
+  23 000c 2010      	        move.l  (a0),d0
+  24 000e 2211      	        move.l  (a1),d1
+  25 0010 7600      	        move.l  #0,d3
+  26               	
+  27 0012 7400      	        move.l  #0,d2
+  28               	        loopstart1:
+  29 0014 B4BA 00CA 	        cmp.l   len_a,d2
+  30 0018 6C1C      	        bge loopend1
+  31 001a 2802      	        move.l  d2,d4
+  32 001c C9FC 0004 	        muls    #4,d4
+  33 0020 2830 4800 	        move.l  (a0,d4),d4
+  34 0024 D684      	        add.l   d4,d3
+  35 0026 B880      	        cmp.l   d0,d4
+  36 0028 6F02      	        ble if1done
+  37 002a 2004      	        move.l  d4,d0
+  38               	        if1done:
+  39 002c B881      	        cmp.l   d1,d4
+  40 002e 6C02      	        bge if2done
+  41 0030 2204      	        move.l  d4,d1
+  42               	        if2done:
+  43 0032 5282      	        add.l   #1,d2
+  44 0034 60DE      	        bra loopstart1
+  45               	        loopend1:
+  46               	
+  47 0036 7400      	        move.l  #0,d2
+  48               	        loopstart2:
+  49 0038 B4BA 00AA 	        cmp.l   len_b,d2
+  50 003c 6C1C      	        bge loopend2
+  51 003e 2802      	        move.l  d2,d4
+  52 0040 C9FC 0004 	        muls    #4,d4
+  53 0044 2831 4800 	        move.l  (a1,d4),d4
+  54 0048 D684      	        add.l   d4,d3
+  55 004a B880      	        cmp.l   d0,d4
+68K GAS  ....255.hw5.s 			page 2
+
+
+  56 004c 6F02      	        ble if3done
+  57 004e 2004      	        move.l  d4,d0
+  58               	        if3done:
+  59 0050 B881      	        cmp.l   d1,d4
+  60 0052 6C02      	        bge if4done
+  61 0054 2204      	        move.l  d4,d1
+  62               	        if4done:
+  63 0056 5282      	        add.l   #1,d2
+  64 0058 60DE      	        bra loopstart2
+  65               	        loopend2:
+  66               	
+  67 005a 23C0 0000 	        move.l  d0,max
+  67      0000 
+  68 0060 23C1 0000 	        move.l  d1,min
+  68      0000 
+  69 0066 23C3 0000 	        move.l  d3,sum
+  69      0000 
+  70               	
+  71 006c 7600      	        move.l  #0,d3 * sum
+  72 006e 7000      	        move.l  #0,d0 * index 1
+  73               	        
+  74               	        loopstart3:
+  75 0070 7200      	        move.l  #0,d1 
+  76 0072 B0BA 006C 	        cmp.l   len_a,d0
+  77 0076 6C28      	        bge loopend3  * if index 1 >= len_a end loop
+  78               	
+  79 0078 2400      	        move.l  d0,d2  
+  80 007a C5FC 0004 	        muls    #4,d2  
+  81 007e 2430 2800 	        move.l  (a0,d2),d2
+  82               	        loopstart4:
+  83 0082 B2BA 0060 	        cmp.l   len_b,d1
+  84 0086 6C14      	        bge loopend4
+  85               	        
+  86 0088 2801      	        move.l  d1,d4
+  87 008a C9FC 0004 	        muls    #4,d4
+  88 008e 2831 4800 	        move.l  (a1,d4),d4
+  89               	        
+  90 0092 B882      	        cmp.l   d2,d4
+  91 0094 6602      	        bne skipcountup
+  92 0096 5283      	        add.l   #1,d3
+  93               	        skipcountup:
+  94 0098 5281      	        add.l   #1,d1
+  95 009a 60E6      	        bra loopstart4
+  96               	        loopend4:
+  97 009c 5280      	        add.l   #1,d0
+  98 009e 60D0      	        bra loopstart3
+  99               	        loopend3:
+ 100               	
+ 101 00a0 23C3 0000 	        move.l  d3,common
+ 101      0000 
+ 102               	
+ 103               	
+ 104               	* ********************************************************************
+ 105               	* Do not touch the stop label - you need it to stop the program
+ 106               	*********************************************************************
+ 107 00a6 4E71      	Stop:   nop
+ 108               	
+68K GAS  ....255.hw5.s 			page 3
+
+
+ 109               	
+ 110               	
+ 111               	* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 112               	*    Variable Section -   Put your variables here IF you need more
+ 113               	*
+ 114               	*    DO NOT define A,B,len_a,len_b,max,min,sum and common !!!
+ 115               	*    They are already defined below
+ 116               	*
+ 117               	*    You can add more variables below this line if you need them
+ 118               	* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 119               	
+ 120               	
+ 121               	
+ 122               	
+ 123               	
+ 124               	* ********************************************************************
+ 125               	* Adjust the arrays (and lengths) below to test different arrays
+ 126               	* ********************************************************************
+ 127 00a8 0000 000D 	A:      dc.l  13,3,21,1,8,5,4,23
+ 127      0000 0003 
+ 127      0000 0015 
+ 127      0000 0001 
+ 127      0000 0008 
+ 128 00c8 0000 0004 	B:      dc.l  4,8,15,16,23,42
+ 128      0000 0008 
+ 128      0000 000F 
+ 128      0000 0010 
+ 128      0000 0017 
+ 129 00e0 0000 0008 	len_a:  dc.l  8
+ 130 00e4 0000 0006 	len_b:  dc.l  6
+ 131               	
+ 132               	* ********************************************************************
+ 133               	* Do not touch anything below this line !!!
+ 134               	* ********************************************************************
+ 135 00e8 0000 0000 	max:    ds.l  1
+ 136 00ec 0000 0000 	min:    ds.l  1
+ 137 00f0 0000 0000 	sum:    ds.l  1
+ 138 00f4 0000 0000 	common: ds.l  1
+ 139               	
+ 140 00f8 4E71      	End:    nop
+ 141               	        end
+68K GAS  ....255.hw5.s 			page 4
+
+
+DEFINED SYMBOLS
+       ....255.hw5.s:19     .text:0000000000000000 Start
+       ....255.hw5.s:107    .text:00000000000000a6 Stop
+       ....255.hw5.s:140    .text:00000000000000f8 End
+       ....255.hw5.s:127    .text:00000000000000a8 A
+       ....255.hw5.s:128    .text:00000000000000c8 B
+       ....255.hw5.s:129    .text:00000000000000e0 len_a
+       ....255.hw5.s:130    .text:00000000000000e4 len_b
+       ....255.hw5.s:135    .text:00000000000000e8 max
+       ....255.hw5.s:136    .text:00000000000000ec min
+       ....255.hw5.s:137    .text:00000000000000f0 sum
+       ....255.hw5.s:138    .text:00000000000000f4 common
+       ....255.hw5.s:28     .text:0000000000000014 loopstart1
+       ....255.hw5.s:45     .text:0000000000000036 loopend1
+       ....255.hw5.s:38     .text:000000000000002c if1done
+       ....255.hw5.s:42     .text:0000000000000032 if2done
+       ....255.hw5.s:48     .text:0000000000000038 loopstart2
+       ....255.hw5.s:65     .text:000000000000005a loopend2
+       ....255.hw5.s:58     .text:0000000000000050 if3done
+       ....255.hw5.s:62     .text:0000000000000056 if4done
+       ....255.hw5.s:74     .text:0000000000000070 loopstart3
+       ....255.hw5.s:99     .text:00000000000000a0 loopend3
+       ....255.hw5.s:82     .text:0000000000000082 loopstart4
+       ....255.hw5.s:96     .text:000000000000009c loopend4
+       ....255.hw5.s:93     .text:0000000000000098 skipcountup
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,17 @@
+
+Student Marty, Simon, NetID smarty graded on Fri Nov 15 13:56:24 EST 2019
+------------------------------------------
+Compilation completed correctly. Warnings provided in 'compErr.log' for your information.
+q1: Creates valid myar archive, compatible with ar
+(-2 Points) q2: Does not create valid myar archive with odd file sizes, compatible with ar
+t1: Properly listing archive created by ar
+t2: Properly listing archive created by your myar
+tv1: Failed on listing archive created by ar, with tv
+tv2: Failed on listing archive created by your myar, with tv
+d1: Failed on deleting a unique file in archive, verified with ar tv
+d3: Failed on the removal of multiple files without reopening archive (use of unlink)
+xo: Properly extracting files with correct permissions, user/group, mtime
+IO: Properly using read/write/lseek for all diskio (unbuffered I/O)
+functions: Properly implemented and used the functions ‘fill_ar_hdr’ and ‘fill_meta’
+------------------------------------------
+Final grade = 98 Extra Points: 0

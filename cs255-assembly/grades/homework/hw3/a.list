@@ -1,0 +1,225 @@
+68K GAS  ....255.hw3.s 			page 1
+
+
+   1               	*
+   2               	* Collaboration Statement here
+   3               	*
+   4               	*
+   5               	*
+   6               		xdef Start,Stop,End
+   7               		xdef Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9,Q10
+   8               		xdef v1,v2,v3,v4,v5,v6,v7,v8,v9,v10
+   9               	
+  10               	Start:
+  11 0000 6008      	        bra     Q1
+  12 0002 85        	        dc.b    -123
+  13 0003 00        	        dc.b       0
+  14 0004 FEC6      	        dc.w    -314
+  15 0006 FFFF EF1F 	        dc.l    -4321
+  16               	
+  17               	*******************************************************************
+  18               	* DO NOT make any changes to the line ABOVE
+  19               	*
+  20               	* Write the assembler instruction to each question after the
+  21               	* CORRESPONDING LABEL:
+  22               	*                       Q1,Q2,Q3,..... Q10
+  23               	* Define the variable (with ds or dc) for each question after the
+  24               	* CORRESPONDING LABEL:
+  25               	*                       v1,v2,v3,..... v10
+  26               	*
+  27               	* The v1,v2,.. labels are towards the end of the file,
+  28               	*
+  29               	* *** Failure to do so will result in point dedections !!! ***
+  30               	*******************************************************************
+  31               	
+  32               	*******************************************************************
+  33               	* Put your assembler instructions AFTER this line
+  34               	*******************************************************************
+  35               	
+  36               	**************************************************************************
+  37               	* Define an uninitialized byte variable at label v1 (see the end of
+  38               	* this file) and  write the assembler instruction at label Q1 to
+  39               	* move the byte value 23 into this variable.
+  40               	*
+  41               	* Do NOT forget to SKIP some space (or use TAB) !!!
+  42               	**************************************************************************
+  43               	Q1:
+  44               	
+  45               	
+  46               	
+  47               	**************************************************************************
+  48               	* Define an initialized byte variable at label v2 with initial value -14
+  49               	* and write the assembler instruction at label Q2 to move the byte value
+  50               	* at memory location B into this variable.
+  51               	*
+  52               	* Do NOT forget to SKIP some space (or use TAB) !!!
+  53               	**************************************************************************
+  54               	Q2:
+  55               	
+  56               	
+  57               	
+68K GAS  ....255.hw3.s 			page 2
+
+
+  58               	**************************************************************************
+  59               	* Define an initialized byte variable at label v3 with initial value -105
+  60               	* and write the assembler instruction at label Q3 to move the byte value
+  61               	* at memory location 5634 into this variable.
+  62               	*
+  63               	* Do NOT forget to SKIP some space (or use TAB) !!!
+  64               	**************************************************************************
+  65               	Q3:
+  66               	
+  67               	
+  68               	
+  69               	**************************************************************************
+  70               	* Define an initialized byte variable at label v4 with initial value -12
+  71               	* and write the assembler instruction at label Q4 to move the byte value
+  72               	* from this variable to memory location 5635.
+  73               	**************************************************************************
+  74               	Q4:
+  75               	
+  76               	
+  77               	**************************************************************************
+  78               	* Define an uninitialized short variable at label v5 and write
+  79               	* the assembler instruction at label Q5 to move the short value 5635
+  80               	* into this variable.
+  81               	**************************************************************************
+  82               	Q5:
+  83               	
+  84               	
+  85               	**************************************************************************
+  86               	* Define an initialized short variable at label v6 with initial value -53
+  87               	* and write the assembler instruction at label Q6 to move the short value
+  88               	* at memory location S into this variable - you should see -4 moved
+  89               	**************************************************************************
+  90               	Q6:
+  91               	
+  92               	
+  93               	
+  94               	**************************************************************************
+  95               	* Define an initialized short variable at label v7 with initial value -1
+  96               	* and write the assembler instruction at label Q7 to move the short value
+  97               	* at memory location 5636 into this variable.
+  98               	**************************************************************************
+  99               	Q7:
+ 100               	
+ 101               	
+ 102               	**************************************************************************
+ 103               	* Define an uninitialized int variable at label v8 and write the assembler
+ 104               	* instruction at label Q8 to move the int value -200000 into this variable.
+ 105               	**************************************************************************
+ 106               	Q8:
+ 107               	
+ 108               	
+ 109               	**************************************************************************
+ 110               	* Define an initialized int variable at label v9 with initial value 255
+ 111               	* and write the assembler instruction at label Q9 to move the int value
+ 112               	* at memory location L into this variable.
+ 113               	**************************************************************************
+ 114               	Q9:
+68K GAS  ....255.hw3.s 			page 3
+
+
+ 115               	
+ 116               	
+ 117               	**************************************************************************
+ 118               	* Define an initialized int variable at label v10 with initial value -224
+ 119               	* and write the assembler instruction at label Q10 to move the int value
+ 120               	* at memory location 5638 into this variable.
+ 121               	**************************************************************************
+ 122               	Q10:
+ 123               	
+ 124               	
+ 125               	
+ 126 000a 4E71      	Stop:	nop
+ 127 000c 4E71      		nop
+ 128               	
+ 129               	*************************************************
+ 130               	* Write your variable definitions here...
+ 131               	*
+ 132               	* Do NOT forget to SKIP some space (or use TAB) !!!
+ 133               	*************************************************
+ 134               	
+ 135               	v1:
+ 136               	
+ 137               	
+ 138               	v2:
+ 139               	
+ 140               	
+ 141               	v3:
+ 142               	
+ 143               	
+ 144               	v4:
+ 145               	
+ 146               	
+ 147               	v5:
+ 148               	
+ 149               	
+ 150               	v6:
+ 151               	
+ 152               	
+ 153               	v7:
+ 154               	
+ 155               	
+ 156               	v8:
+ 157               	
+ 158               	
+ 159               	v9:
+ 160               	
+ 161               	
+ 162               	v10:
+ 163               	
+ 164               	
+ 165               	*************************************************
+ 166               	* Don't touch the variables below this line
+ 167               	*************************************************
+ 168               	
+ 169               	End:
+ 170 000e 0000 0000 		ds.b    20
+ 170      0000 0000 
+68K GAS  ....255.hw3.s 			page 4
+
+
+ 170      0000 0000 
+ 170      0000 0000 
+ 170      0000 0000 
+ 171               	
+ 172 0022 18        	B:      dc.b    24
+ 173 0023 00        	        dc.b     0
+ 174 0024 FFF8      	S:      dc.w    -8
+ 175 0026 FFFF FFF8 	L:      dc.l    -8
+ 176               	
+ 177               		end
+68K GAS  ....255.hw3.s 			page 5
+
+
+DEFINED SYMBOLS
+       ....255.hw3.s:10     .text:0000000000000000 Start
+       ....255.hw3.s:126    .text:000000000000000a Stop
+       ....255.hw3.s:169    .text:000000000000000e End
+       ....255.hw3.s:43     .text:000000000000000a Q1
+       ....255.hw3.s:54     .text:000000000000000a Q2
+       ....255.hw3.s:65     .text:000000000000000a Q3
+       ....255.hw3.s:74     .text:000000000000000a Q4
+       ....255.hw3.s:82     .text:000000000000000a Q5
+       ....255.hw3.s:90     .text:000000000000000a Q6
+       ....255.hw3.s:99     .text:000000000000000a Q7
+       ....255.hw3.s:106    .text:000000000000000a Q8
+       ....255.hw3.s:114    .text:000000000000000a Q9
+       ....255.hw3.s:122    .text:000000000000000a Q10
+       ....255.hw3.s:135    .text:000000000000000e v1
+       ....255.hw3.s:138    .text:000000000000000e v2
+       ....255.hw3.s:141    .text:000000000000000e v3
+       ....255.hw3.s:144    .text:000000000000000e v4
+       ....255.hw3.s:147    .text:000000000000000e v5
+       ....255.hw3.s:150    .text:000000000000000e v6
+       ....255.hw3.s:153    .text:000000000000000e v7
+       ....255.hw3.s:156    .text:000000000000000e v8
+       ....255.hw3.s:159    .text:000000000000000e v9
+       ....255.hw3.s:162    .text:000000000000000e v10
+       ....255.hw3.s:172    .text:0000000000000022 B
+       ....255.hw3.s:174    .text:0000000000000024 S
+       ....255.hw3.s:175    .text:0000000000000026 L
+
+NO UNDEFINED SYMBOLS

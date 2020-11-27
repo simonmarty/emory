@@ -1,0 +1,250 @@
+68K GAS  ....255.hw4.s 			page 1
+
+
+   1               	* Collaboration Statement:
+   2               	* THIS  CODE  WAS MY OWN WORK,IT WAS  WRITTEN  WITHOUT  CONSULTING  ANY
+   3               	* SOURCES  OUTSIDE  OF  THOSE  APPROVED  BY THE  INSTRUCTOR. Simon Marty
+   4               	*
+   5               		xdef Start,Stop,End
+   6               		xdef Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9,Q10
+   7               		xdef A,B,C
+   8               		xdef i,j,k
+   9               		xdef head
+  10               		xdef ans_b,ans_w,ans_l
+  11               	
+  12               	Start:
+  13               	*******************************************************************
+  14               	* Put your assembler instructions here
+  15               	* Write the answer to each question after the corresponding label.
+  16               	* DO NOT REMOVE ANY LABEL IN THIS ASSIGNMENT
+  17               	* *** Failure to do so will result in point dedections !!! ***
+  18               	*******************************************************************
+  19               	
+  20               	
+  21               	*         ans_b = A[8];	
+  22               	Q1:
+  23 0000 207C 0000 		movea.l	#A,a0
+  23      0000 
+  24 0006 13E8 0008 		move.b	8(a0),ans_b
+  24      0000 0000 
+  25               		
+  26               	*         ans_l = B[3];	
+  27               	Q2:
+  28 000e 207C 0000 		movea.l	#B,a0
+  28      0000 
+  29 0014 3028 0006 		move.w	6(a0),d0
+  30 0018 48C0      		ext.l	d0
+  31 001a 23C0 0000 		move.l	d0,ans_l
+  31      0000 
+  32               	
+  33               	*         ans_l = C[k];	
+  34               	Q3:
+  35 0020 203A 00F2 		move.l	k,d0
+  36 0024 C1FC 0004 		muls	#4,d0
+  37 0028 207C 0000 		movea.l	#C,a0
+  37      0000 
+  38 002e 23F0 0800 		move.l	(a0,d0),ans_l
+  38      0000 0000 
+  39               	
+  40               	*         ans_w = A[k + 2]; 
+  41               	Q4:
+  42 0036 203A 00DC 		move.l	k,d0
+  43 003a 5480      		add.l	#2,d0
+  44 003c 207C 0000 		movea.l	#A,a0
+  44      0000 
+  45 0042 1230 0800 		move.b	(a0,d0),d1
+  46 0046 4881      		ext.w	d1
+  47 0048 33C1 0000 		move.w	d1,ans_w
+  47      0000 
+  48               	
+  49               	*         ans_w = C[i * k]; 
+68K GAS  ....255.hw4.s 			page 2
+
+
+  50               	Q5:
+  51 004e 207C 0000 		movea.l	#C,a0
+  51      0000 
+  52 0054 203A 00BE 		move.l	k,d0
+  53 0058 123A 00B6 		move.b	i,d1
+  54 005c 4881      		ext.w	d1
+  55 005e C1C1      		muls	d1,d0
+  56 0060 C1FC 0004 		muls	#4,d0
+  57 0064 2030 0800 		move.l	(a0,d0),d0
+  58 0068 33C0 0000 		move.w	d0,ans_w
+  58      0000 
+  59               	
+  60               	*         ans_l = B[k+1] / A[i-1]; 
+  61               	Q6:
+  62 006e 207C 0000 		movea.l	#A,a0
+  62      0000 
+  63 0074 227C 0000 		movea.l	#B,a1
+  63      0000 
+  64 007a 203A 0098 		move.l	k,d0
+  65 007e 5280      		add.l	#1,d0
+  66 0080 C1FC 0002 		muls	#2,d0
+  67               	
+  68 0084 123A 008A 		move.b	i,d1
+  69 0088 48C1      		ext.l	d1
+  70 008a 5381      		sub.l	#1,d1
+  71               		
+  72 008c 3031 0800 		move.w	(a1,d0),d0
+  73 0090 48C0      		ext.l	d0
+  74 0092 1230 1800 		move.b	(a0,d1),d1
+  75 0096 48C1      		ext.l	d1
+  76               		
+  77 0098 81C1      		divs	d1,d0
+  78 009a 48C0      		ext.l d0
+  79 009c 23C0 0000 		move.l d0,ans_l
+  79      0000 
+  80               	
+  81               	*         ans_l = B[A[i + 5] - 80]; 
+  82               	Q7:
+  83 00a2 103A 006C 		move.b	i,d0
+  84 00a6 48C0      		ext.l	d0
+  85 00a8 5A80      		add.l	#5,d0
+  86 00aa 207C 0000 		movea.l	#A,a0
+  86      0000 
+  87 00b0 1030 0800 		move.b	(a0,d0),d0
+  88 00b4 48C0      		ext.l	d0
+  89 00b6 0480 0000 		sub.l	#80,d0
+  89      0050 
+  90 00bc C1FC 0002 		muls	#2,d0
+  91 00c0 207C 0000 		movea.l	#B,a0
+  91      0000 
+  92 00c6 3030 0800 		move.w	(a0,d0),d0
+  93 00ca 48C0      		ext.l	d0
+  94 00cc 23C0 0000 		move.l	d0,ans_l
+  94      0000 
+  95               	
+  96               	*         ans_w = B[20]; 
+  97               	Q8:
+68K GAS  ....255.hw4.s 			page 3
+
+
+  98 00d2 207C 0000 		movea.l	#B,a0
+  98      0000 
+  99 00d8 33E8 0028 		move.w	40(a0),ans_w
+  99      0000 0000 
+ 100               	
+ 101               	*	  ans_l = head.value2;
+ 102               	Q9:
+ 103 00e0 207A 007C 		movea.l	head,a0
+ 104 00e4 3028 0004 		move.w	4(a0),d0
+ 105 00e8 48C0      		ext.l	d0
+ 106 00ea 23C0 0000 		move.l	d0,ans_l	
+ 106      0000 
+ 107               			
+ 108               	
+ 109               	
+ 110               	*	  ans_w = head.next.next.value1;
+ 111               	Q10:
+ 112 00f0 207A 006C 		move.l	head,a0
+ 113 00f4 2068 0006 		move.l	6(a0),a0
+ 114 00f8 2068 0006 		move.l	6(a0),a0
+ 115 00fc 33E8 0002 		move.w	2(a0),ans_w
+ 115      0000 0000 
+ 116               	
+ 117               	*************************************************
+ 118               	* Don't write any code below this line
+ 119               	*************************************************
+ 120               	
+ 121 0104 4E71      	Stop:	nop
+ 122 0106 4E71      		    nop
+ 123               	
+ 124               	*************************************************
+ 125               	* Don't touch these variables
+ 126               	* You do NOT need to define more variables !!!
+ 127               	*************************************************
+ 128               	
+ 129               	************************************************************************
+ 130               	* Note the use of the even directive to locate the variables ans_w and j
+ 131               	* at an EVEN address due to the variables ans_b and i being bytes
+ 132               	* Short and int variables MUST start on an even address (or you 
+ 133               	* will get an "odd address" error)
+ 134               	************************************************************************
+ 135               	
+ 136 0108 00        	ans_b: ds.b 1
+ 137 0109 00        		   even
+ 138 010a 0000      	ans_w: ds.w 1
+ 139 010c 0000 0000 	ans_l: ds.l 1
+ 140               	
+ 141 0110 02        	i:     dc.b  2
+ 142 0111 00        		   even
+ 143 0112 0004      	j:     dc.w  4
+ 144 0114 0000 0003 	k:     dc.l  3
+ 145               	
+ 146 0118 F516 DF2C 	A:     dc.b   -11,22,-33,44,-55,66,-77,88,-99,109
+ 146      C942 B358 
+ 146      9D6D 
+ 147               	
+ 148 0122 006F FF22 	B:     dc.w   111,-222,333,-444,555,-666,777,-888,999,-5191
+68K GAS  ....255.hw4.s 			page 4
+
+
+ 148      014D FE44 
+ 148      022B FD66 
+ 148      0309 FC88 
+ 148      03E7 EBB9 
+ 149               	
+ 150 0136 0000 0457 	C:     dc.l   1111,-2222,3333,-4444,5555,-6666,7777,-8888,9999,-9983
+ 150      FFFF F752 
+ 150      0000 0D05 
+ 150      FFFF EEA4 
+ 150      0000 15B3 
+ 151               	
+ 152               	
+ 153 015e 0000 0000 	head:   dc.l  list1
+ 154               	
+ 155 0162 0000 09A4 	list3:  dc.l 2468
+ 156 0166 0058      	        dc.w 88
+ 157 0168 0000 0000 		dc.l list4
+ 158 016c 0000 05BE 	list2:  dc.l 1470
+ 159 0170 004E      	        dc.w 78
+ 160 0172 0000 0000 		dc.l list3
+ 161 0176 0000 11D7 	list4:  dc.l 4567
+ 162 017a 0041      	        dc.w 65
+ 163 017c 0000 0000 		dc.l list5
+ 164 0180 0000 054D 	list1:  dc.l 1357
+ 165 0184 0062      	        dc.w 98
+ 166 0186 0000 0000 		dc.l list2
+ 167 018a 0000 2694 	list5:  dc.l 9876
+ 168 018e 0036      	        dc.w 54
+ 169 0190 0000 0000 		dc.l 0
+ 170               	
+ 171               	
+ 172               	End:
+ 173               		end
+68K GAS  ....255.hw4.s 			page 5
+
+
+DEFINED SYMBOLS
+       ....255.hw4.s:12     .text:0000000000000000 Start
+       ....255.hw4.s:121    .text:0000000000000104 Stop
+       ....255.hw4.s:172    .text:0000000000000194 End
+       ....255.hw4.s:22     .text:0000000000000000 Q1
+       ....255.hw4.s:27     .text:000000000000000e Q2
+       ....255.hw4.s:34     .text:0000000000000020 Q3
+       ....255.hw4.s:41     .text:0000000000000036 Q4
+       ....255.hw4.s:50     .text:000000000000004e Q5
+       ....255.hw4.s:61     .text:000000000000006e Q6
+       ....255.hw4.s:82     .text:00000000000000a2 Q7
+       ....255.hw4.s:97     .text:00000000000000d2 Q8
+       ....255.hw4.s:102    .text:00000000000000e0 Q9
+       ....255.hw4.s:111    .text:00000000000000f0 Q10
+       ....255.hw4.s:146    .text:0000000000000118 A
+       ....255.hw4.s:148    .text:0000000000000122 B
+       ....255.hw4.s:150    .text:0000000000000136 C
+       ....255.hw4.s:141    .text:0000000000000110 i
+       ....255.hw4.s:143    .text:0000000000000112 j
+       ....255.hw4.s:144    .text:0000000000000114 k
+       ....255.hw4.s:153    .text:000000000000015e head
+       ....255.hw4.s:136    .text:0000000000000108 ans_b
+       ....255.hw4.s:138    .text:000000000000010a ans_w
+       ....255.hw4.s:139    .text:000000000000010c ans_l
+       ....255.hw4.s:164    .text:0000000000000180 list1
+       ....255.hw4.s:155    .text:0000000000000162 list3
+       ....255.hw4.s:161    .text:0000000000000176 list4
+       ....255.hw4.s:158    .text:000000000000016c list2
+       ....255.hw4.s:167    .text:000000000000018a list5
+
+NO UNDEFINED SYMBOLS

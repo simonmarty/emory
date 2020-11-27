@@ -1,0 +1,14 @@
+Grades
+==================
+Question q1: 2/2
+Question q2: 2/2
+Question q3: 3/3
+Question q4: 3/3
+Question q5: 2/2
+Question q6: 3/3
+Question q7: 2/3
+Question q8: 2/2
+------------------
+Total: 19/20
+
+q7: Your heuristic expands 9443 > 9000 nodes on the trickySearch.

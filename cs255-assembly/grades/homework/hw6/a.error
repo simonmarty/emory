@@ -1,0 +1,35 @@
+hw6.o: In function `Start':
+(.text+0x0): multiple definition of `Start'
+hw6.o:(.text+0x0): first defined here
+hw6.o: In function `Start2':
+(.text+0x26): multiple definition of `Start2'
+hw6.o:(.text+0x26): first defined here
+hw6.o: In function `Stop':
+(.text+0x4e): multiple definition of `Stop'
+hw6.o:(.text+0x4e): first defined here
+hw6.o: In function `End':
+(.text+0xbe): multiple definition of `End'
+hw6.o:(.text+0xbe): first defined here
+hw6.o: In function `A':
+(.text+0x52): multiple definition of `A'
+hw6.o:(.text+0x52): first defined here
+hw6.o: In function `ans_1':
+(.text+0xb6): multiple definition of `ans_1'
+hw6.o:(.text+0xb6): first defined here
+hw6.o: In function `ans_2':
+(.text+0xba): multiple definition of `ans_2'
+hw6.o:(.text+0xba): first defined here
+hw6.o: In function `key_1':
+(.text+0xae): multiple definition of `key_1'
+hw6.o:(.text+0xae): first defined here
+hw6.o: In function `key_2':
+(.text+0xb2): multiple definition of `key_2'
+hw6.o:(.text+0xb2): first defined here
+hw6.o: In function `Start':
+(.text+0x16): undefined reference to `BinarySearch'
+hw6.o: In function `Start2':
+(.text+0x3e): undefined reference to `BinarySearch'
+hw6.o: In function `Start':
+(.text+0x16): undefined reference to `BinarySearch'
+hw6.o: In function `Start2':
+(.text+0x3e): undefined reference to `BinarySearch'

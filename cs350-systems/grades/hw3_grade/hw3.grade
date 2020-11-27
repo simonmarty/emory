@@ -1,0 +1,14 @@
+
+Student Marty, Simon, NetID smarty graded on Sun Dec  1 15:52:32 EST 2019
+------------------------------------------
+Compilation completed correctly. Warnings provided in 'compErr.log' for your information.
+a: Properly using '/bin/sort' for sorting
+b: The parent process waits for all its children
+c: Stream functions (buffered I/O) being used for I/O to/from pipes
+d: Pipes are being closed by 'fclose' when used for stream-based I/O
+e: Output is free of duplicates and in order with 1 sorter and a small file
+f: Output has no small (<5) or large (>32) words with 1 sorter and a small file
+g1: Results are correct for 1 sorter(s) and a small (5 KB) file
+h1: Results are correct for 1 sorter(s) and a large (1 MB) file
+------------------------------------------
+Final grade = 100 Extra Points: 0
